@@ -1,0 +1,311 @@
+@charset "UTF-8";
+ 
+/* ---------- GENERALES ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+ 
+body {
+  background-color: #fff;
+  color: #222;
+}
+ 
+/* ---------- HERO NUEVO ---------- */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 2rem;
+  background-color: #7200B4;
+  min-height: 80vh;
+  gap: 2rem;
+}
+
+/* Izquierda */
+.hero-left {
+  flex: 1;
+}
+
+.hero-left h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.hero-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 600px;
+  color: #fff;
+}
+
+/* Derecha */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+
+.hero-foto {
+  width: 480px;
+  height: 480px;
+  border-radius: 20px;  /* si la quieres circular cambia a 50% */
+  object-fit: cover;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero-left h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-text {
+    margin: 0 auto;
+  }
+
+  .hero-foto {
+    width: 220px;
+    height: 220px;
+  }
+}
+ 
+/* ---------- SECCI�N: QU� PUEDO HACER POR TI ---------- */
+.servicios {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+ 
+.servicios h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+ 
+/* Cuadr�cula fija de 4 columnas */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-items: center;
+  align-items: stretch;
+}
+ 
+/* Tarjetas de servicio */
+.servicio {
+  position: relative;
+  height: 280px;
+  background-color: #7200B4;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  width: 100%;
+}
+.titulo-servicio {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  z-index: 2;
+
+  opacity: 1;                  /* visible por defecto */
+  transition: opacity 0.4s ease;
+  pointer-events: none;        /* no bloquea el hover */
+}
+.servicio:hover .titulo-servicio {
+  opacity: 0; /* desaparece suavemente */
+}
+ 
+.servicio:hover {
+  transform: translateY(-6px);
+}
+ 
+/* Contenido oculto que sube al hacer hover */
+.contenido {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(34, 34, 34, 0.9);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  transition: bottom 0.4s ease;
+}
+ 
+.servicio:hover .contenido {
+  bottom: 0;
+}
+ 
+/* ---------- GALER�A ---------- */
+.galeria {
+  position: relative;
+  margin: 4rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 550px;
+  height: 330px;
+}
+ 
+.galeria img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  object-fit: contain; /* Muestra la imagen completa sin recortarla */
+  background-color: #fff; /* Fondo detr�s de la imagen */
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+ 
+.galeria img.active {
+  opacity: 1;
+}
+ 
+/* ---------- TRABAJOS ---------- */
+.trabajos {
+  padding: 4rem 2rem;
+}
+section h2,
+footer h2 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 3rem;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section h2.visible,
+footer h2.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+ 
+.proyecto-bloque {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+ 
+.proyecto-texto {
+  flex: 1 1 300px;
+}
+ 
+.proyecto-texto h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #111;
+}
+ 
+.proyecto-imagenes {
+  flex: 2 1 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+}
+ 
+/* ?? Im�genes del proyecto */
+.proyecto-imagenes img.img-cuadro {
+  width: calc(50% - 1rem); /* Dos im�genes por fila */
+  max-width: 380px;
+  height: 280px;
+  border-radius: 12px;
+  object-fit: contain; /* Evita que se corten */
+  background-color: #fff;
+  padding: 0.5rem;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+ 
+.proyecto-imagenes img.img-cuadro:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+ 
+/* ?? �rea del QR */
+.qr-area {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: center;
+
+  width: 100%;              /* 🔥 clave: ocupa toda la fila */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 2rem;         /* separación del contenido */
+}
+
+.qr-area img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.qr-area .qr-text {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #444;
+}
+ 
+/* ---------- CONTACTO ---------- */
+.contacto {
+  background-color: #7200B4;
+  color: #fff;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+ 
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .servicios-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 por fila en tablet */
+  }
+}
+ 
+@media (max-width: 600px) {
+  .servicios-grid {
+    grid-template-columns: 1fr; /* 1 por fila en m�vil */
+  }
+ 
+  .galeria {
+    max-width: 90%;
+    height: auto;
+  }
+ 
+  .proyecto-imagenes img.img-cuadro {
+    width: 100%; /* una por fila en m�vil */
+    height: auto;
+  }
+}
